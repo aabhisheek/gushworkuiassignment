@@ -51,29 +51,41 @@
 
   const siteHeader = document.getElementById('siteHeader');
 
-  let lastScrollY   = window.scrollY;
-  let headerVisible = true;
-  const HIDE_AFTER  = 80; // px from top before hide logic activates
+  let lastScrollY    = window.scrollY;
+  let headerVisible  = false;   // starts hidden (above fold)
+  let wasBelowFold   = false;   // tracks first fold-crossing
 
   function updateHeader() {
     if (!siteHeader) return;
-    const scrollY = window.scrollY;
+    const scrollY  = window.scrollY;
+    const foldH    = window.innerHeight; // first fold = one full viewport height
 
-    // Shadow
+    // Shadow (only meaningful when header is visible)
     siteHeader.classList.toggle('is-scrolled', scrollY > 8);
 
-    // Hide/show based on scroll direction (only below fold)
-    if (scrollY > HIDE_AFTER) {
-      if (scrollY > lastScrollY && headerVisible) {
+    if (scrollY < foldH) {
+      // ── Above fold: always hidden ──
+      siteHeader.classList.remove('is-visible');
+      siteHeader.classList.remove('is-hidden');
+      headerVisible = false;
+      wasBelowFold  = false;
+    } else {
+      // ── Below fold: smart hide/show on scroll direction ──
+      if (!wasBelowFold) {
+        // First time crossing the fold → reveal header
+        siteHeader.classList.add('is-visible');
+        siteHeader.classList.remove('is-hidden');
+        headerVisible = true;
+        wasBelowFold  = true;
+      } else if (scrollY > lastScrollY && headerVisible) {
+        // Scrolling down → hide
         siteHeader.classList.add('is-hidden');
         headerVisible = false;
       } else if (scrollY < lastScrollY && !headerVisible) {
+        // Scrolling up → show
         siteHeader.classList.remove('is-hidden');
         headerVisible = true;
       }
-    } else {
-      siteHeader.classList.remove('is-hidden');
-      headerVisible = true;
     }
 
     lastScrollY = scrollY;
@@ -487,6 +499,11 @@
    *    will be magnified.
    *  - A large result panel (.zoom-result) appears to the right
    *    of the gallery column, showing the magnified portion.
+   *
+   * Tablet/hybrid fallback:
+   *  - On pointer:coarse devices (tablets, stylus) a tap on the
+   *    gallery image opens a full-screen lightbox with the
+   *    zoomed image (.zoom-lightbox), dismissable by tap/Escape.
    * ===================================================== */
 
   const zoomLens     = document.getElementById('zoomLens');
@@ -497,6 +514,9 @@
     const ZOOM    = 2.5;   // magnification factor
     const LENS_W  = 120;   // indicator box width (px)
     const LENS_H  = 100;   // indicator box height (px)
+
+    const isFinePonter  = () => window.matchMedia('(pointer: fine)').matches;
+    const isCoarsePointer = () => window.matchMedia('(pointer: coarse)').matches;
 
     function getCurrentSlideImg() {
       const active = galleryTrack.querySelector('.gallery-slide.is-active');
@@ -535,31 +555,77 @@
       }
     }
 
+    // ── Desktop (fine pointer): hover zoom ──
     galleryViewport.addEventListener('mouseenter', () => {
-      // Only activate on desktop (mouse / fine pointer)
-      if (!window.matchMedia('(pointer: fine)').matches) return;
+      if (!isFinePonter()) return;
       zoomLens.style.display = 'block';
       if (zoomResult) {
         zoomResult.style.display = 'block';
-        // Small delay so display:block renders before opacity transition kicks in
         requestAnimationFrame(() => zoomResult.classList.add('is-visible'));
       }
     });
 
     galleryViewport.addEventListener('mouseleave', () => {
+      if (!isFinePonter()) return;
       zoomLens.style.display = 'none';
       if (zoomResult) {
         zoomResult.classList.remove('is-visible');
-        // Hide after CSS fade-out transition completes (150ms)
         setTimeout(() => { zoomResult.style.display = 'none'; }, 160);
       }
     });
 
     galleryViewport.addEventListener('mousemove', throttle(onGalleryMouseMove, 16), { passive: true });
+
+    // ── Tablet / stylus (coarse pointer): tap-to-lightbox zoom ──
+    // Create lightbox element once and reuse
+    const lightbox = document.createElement('div');
+    lightbox.className = 'zoom-lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-label', 'Zoomed product image');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.innerHTML = '<img class="zoom-lightbox-img" src="" alt="Product zoom" /><button class="zoom-lightbox-close" aria-label="Close zoom">&times;</button>';
+    document.body.appendChild(lightbox);
+
+    const lightboxImg   = lightbox.querySelector('.zoom-lightbox-img');
+    const lightboxClose = lightbox.querySelector('.zoom-lightbox-close');
+
+    function openLightbox() {
+      const img = getCurrentSlideImg();
+      if (!img) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.setAttribute('hidden', '');
+      lightbox.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => lightbox.classList.add('is-open'));
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lightbox.setAttribute('hidden', ''); }, 220);
+      galleryViewport.focus();
+    }
+
+    galleryViewport.addEventListener('click', (e) => {
+      if (!isCoarsePointer()) return;
+      openLightbox();
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
   }
 
   /* =====================================================
-   * 11 — FORM HANDLING
+   * 10 — FORM HANDLING
    * ===================================================== */
 
   /**
