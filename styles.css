@@ -231,6 +231,27 @@ h1,h2,h3,h4,h5,h6 {
 /* Full width */
 .btn-full { width: 100%; justify-content: center; }
 
+/* ── Announcement bar (Figma top strip) ── */
+.announce-bar {
+  background: #1E3A8A;
+  color: var(--c-white);
+  text-align: center;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-med);
+  padding: 10px var(--sp-4);
+  line-height: 1.4;
+  position: relative;
+  z-index: 900;
+}
+.announce-link {
+  color: #93C5FD;
+  font-weight: var(--fw-semi);
+  text-decoration: none;
+  margin-left: var(--sp-2);
+  white-space: nowrap;
+}
+.announce-link:hover { color: var(--c-white); text-decoration: underline; }
+
 /* ── 6. SITE HEADER ── */
 .site-header {
   position: fixed;
@@ -283,26 +304,15 @@ h1,h2,h3,h4,h5,h6 {
 /* Logo */
 .logo {
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
   text-decoration: none;
   flex-shrink: 0;
 }
-.logo-main {
-  font-size: 1.35rem;
-  font-weight: var(--fw-black);
-  color: var(--c-brand-red);
-  font-style: italic;
-  letter-spacing: -.02em;
-}
-.logo-lam { color: #7B1616; }
-.logo-sub {
-  font-size: .6rem;
-  font-weight: var(--fw-black);
-  color: var(--c-brand-blue);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-top: 1px;
+.logo img {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* Nav */
@@ -618,13 +628,18 @@ h1,h2,h3,h4,h5,h6 {
   flex-wrap: wrap;
 }
 .brand-logo {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-black);
-  letter-spacing: .12em;
-  color: var(--c-text-4);
-  transition: color var(--tr-fast);
+  display: inline-flex;
+  align-items: center;
+  opacity: .7;
+  transition: opacity var(--tr-fast);
 }
-.brand-logo:hover { color: var(--c-text-2); }
+.brand-logo:hover { opacity: 1; }
+.brand-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 .brand-sep {
   width: 4px; height: 4px;
   background: var(--c-border);
@@ -992,6 +1007,13 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 1.7;
   flex: 1;
 }
+.testi-headline {
+  font-size: var(--fs-base) !important;
+  font-weight: var(--fw-semi) !important;
+  color: var(--c-text) !important;
+  margin-bottom: var(--sp-2);
+  flex: none !important;
+}
 .testi-card footer {
   display: flex;
   align-items: center;
@@ -1237,10 +1259,7 @@ h1,h2,h3,h4,h5,h6 {
 /* Logo inside bordered rounded box — matches Figma footer */
 .footer-logo-box {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 3px;
-  line-height: 1;
+  align-items: center;
   text-decoration: none;
   border: 1px solid #CBD5E1;
   border-radius: 10px;
@@ -1248,6 +1267,12 @@ h1,h2,h3,h4,h5,h6 {
   background: var(--c-white);
   flex-shrink: 0;
   width: fit-content;
+}
+.footer-logo-box img {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 .footer-tagline { font-size: var(--fs-base); color: var(--c-text-3); text-align: right; }
 .footer-tagline .text-highlight { color: var(--c-accent); font-weight: var(--fw-bold); }
@@ -1936,8 +1961,7 @@ h1,h2,h3,h4,h5,h6 {
   .cta-banner        { padding-block: var(--sp-8); }
 
   /* ── Logo ── */
-  .logo-main         { font-size: 1.1rem; }
-  .logo-sub          { font-size: .55rem; }
+  .logo img          { height: 36px; }
 
   /* ── Hero ── */
   .product-h1        { font-size: var(--fs-lg); }

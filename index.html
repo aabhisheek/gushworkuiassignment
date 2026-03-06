@@ -9,13 +9,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <!-- Performance: preconnect for image CDN -->
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <!-- Preconnect for Figma-exported assets -->
+  <link rel="preload" href="assets/hero-main.png" as="image" />
 </head>
 <body>
 
   <!-- Accessibility: skip to main content -->
   <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Announcement bar (from Figma header) -->
+  <div class="announce-bar" role="banner" aria-label="Promotion">
+    Get 10% off for 3 months if start today!
+    <a href="#" class="announce-link">See Plans &amp; Pricing &rarr;</a>
+  </div>
 
   <!-- ===================================================
        STICKY HEADER
@@ -25,14 +31,14 @@
 
       <!-- Logo -->
       <a href="#" class="logo" aria-label="Mangalam HDPE Pipes — Home">
-        <span class="logo-main">Manga<span class="logo-lam">lam</span></span>
-        <span class="logo-sub">HDPE PIPES</span>
+        <img src="assets/logo.png" alt="Mangalam HDPE Pipes" width="140" height="50" />
       </a>
 
       <!-- Desktop Nav -->
       <nav class="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#" class="nav-link">About Us</a></li>
+          <li><a href="#" class="nav-link">Why Gushwork</a></li>
           <li class="nav-has-dropdown">
             <a href="#" class="nav-link nav-link--dropdown" aria-haspopup="true">
               Products
@@ -48,6 +54,7 @@
               <a href="#">Fittings &amp; Accessories</a>
             </div>
           </li>
+          <li><a href="#" class="nav-link">Company</a></li>
           <li><a href="#" class="btn btn-contact">Contact Us</a></li>
         </ul>
       </nav>
@@ -62,7 +69,9 @@
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <nav>
         <a href="#" class="mobile-link">About Us</a>
+        <a href="#" class="mobile-link">Why Gushwork</a>
         <a href="#" class="mobile-link">Products</a>
+        <a href="#" class="mobile-link">Company</a>
         <a href="#" class="mobile-link">Contact Us</a>
       </nav>
       <div class="mobile-actions">
@@ -85,7 +94,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
-          <span aria-current="page">Two For One Tabular</span>
+          <span aria-current="page">Two For One Twister</span>
         </nav>
 
         <div class="hero-layout">
@@ -101,19 +110,19 @@
                 <div class="zoom-lens" id="zoomLens" aria-hidden="true"></div>
                 <div class="gallery-track" id="galleryTrack">
                   <div class="gallery-slide is-active">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="HDPE pipes construction site" loading="eager" fetchpriority="high" width="800" height="600"/>
+                    <img src="assets/hero-main.png" alt="Fishnet manufacturing — orange nets on deck" loading="eager" fetchpriority="high" width="600" height="500"/>
                   </div>
                   <div class="gallery-slide">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="HDPE pipe installation crew" loading="lazy" width="800" height="600"/>
+                    <img src="assets/hero-2.jpg" alt="Industrial workers reviewing production line" loading="lazy" width="600" height="500"/>
                   </div>
                   <div class="gallery-slide">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Quality inspection process" loading="lazy" width="800" height="600"/>
+                    <img src="assets/hero-3.jpg" alt="Precision twisting machine with yarn bobbins" loading="lazy" width="600" height="500"/>
                   </div>
                   <div class="gallery-slide">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="HDPE pipe coil storage" loading="lazy" width="800" height="600"/>
+                    <img src="assets/hero-main.png" alt="Fishnet manufacturing close-up" loading="lazy" width="600" height="500"/>
                   </div>
                   <div class="gallery-slide">
-                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" alt="Underground pipe installation" loading="lazy" width="800" height="600"/>
+                    <img src="assets/hero-2.jpg" alt="Manufacturing facility inspection" loading="lazy" width="600" height="500"/>
                   </div>
                 </div>
               </div>
@@ -125,19 +134,19 @@
             <!-- Thumbnails -->
             <div class="gallery-thumbs" id="galleryThumbs" role="tablist" aria-label="Product images">
               <button class="thumb is-active" data-idx="0" role="tab" aria-selected="true">
-                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=120&q=70" alt="View 1" loading="lazy"/>
+                <img src="assets/hero-main.png" alt="View 1" loading="lazy"/>
               </button>
               <button class="thumb" data-idx="1" role="tab" aria-selected="false">
-                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=120&q=70" alt="View 2" loading="lazy"/>
+                <img src="assets/hero-2.jpg" alt="View 2" loading="lazy"/>
               </button>
               <button class="thumb" data-idx="2" role="tab" aria-selected="false">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=120&q=70" alt="View 3" loading="lazy"/>
+                <img src="assets/hero-3.jpg" alt="View 3" loading="lazy"/>
               </button>
               <button class="thumb" data-idx="3" role="tab" aria-selected="false">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&q=70" alt="View 4" loading="lazy"/>
+                <img src="assets/hero-main.png" alt="View 4" loading="lazy"/>
               </button>
               <button class="thumb" data-idx="4" role="tab" aria-selected="false">
-                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=120&q=70" alt="View 5" loading="lazy"/>
+                <img src="assets/hero-2.jpg" alt="View 5" loading="lazy"/>
               </button>
             </div>
 
@@ -193,8 +202,9 @@
               <span class="price-label-text">Price Range</span>
               <div class="price-value">₹4,80,000 - 7,90,000</div>
               <div class="price-tags">
-                <span class="price-tag">Shipping: 8-12 days</span>
+                <span class="price-tag">Shipping: 6-12 days</span>
                 <span class="price-tag">Returns: If returned within 7 days</span>
+                <span class="price-tag">Certifications: ISO Certified, BIS Certified</span>
               </div>
             </div>
 
@@ -225,17 +235,17 @@
       <div class="container">
         <p class="trusted-label">Trusted by Hundreds of Companies Globally</p>
         <div class="brands-row">
-          <span class="brand-logo">EUROFLEX</span>
+          <span class="brand-logo"><img src="assets/product-1.png" alt="Euroflex" loading="lazy" height="40"/></span>
           <span class="brand-sep" aria-hidden="true"></span>
-          <span class="brand-logo">EUROFLEX</span>
+          <span class="brand-logo"><img src="assets/product-1.png" alt="Euroflex" loading="lazy" height="40"/></span>
           <span class="brand-sep" aria-hidden="true"></span>
-          <span class="brand-logo">EUROFLEX</span>
+          <span class="brand-logo"><img src="assets/product-1.png" alt="Euroflex" loading="lazy" height="40"/></span>
           <span class="brand-sep" aria-hidden="true"></span>
-          <span class="brand-logo">EUROFLEX</span>
+          <span class="brand-logo"><img src="assets/product-1.png" alt="Euroflex" loading="lazy" height="40"/></span>
           <span class="brand-sep" aria-hidden="true"></span>
-          <span class="brand-logo">EUROFLEX</span>
+          <span class="brand-logo"><img src="assets/product-1.png" alt="Euroflex" loading="lazy" height="40"/></span>
           <span class="brand-sep" aria-hidden="true"></span>
-          <span class="brand-logo">EUROFLEX</span>
+          <span class="brand-logo"><img src="assets/product-1.png" alt="Euroflex" loading="lazy" height="40"/></span>
         </div>
       </div>
     </section>
@@ -475,37 +485,44 @@
         <div class="apps-viewport">
           <div class="apps-track" id="appsTrack">
             <div class="app-card">
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=420&q=75" alt="Pipe Manufacturing" loading="lazy"/>
-              <div class="app-overlay">
-                <h3>Pipe Manufacturing</h3>
-                <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
-              </div>
-            </div>
-            <div class="app-card">
-              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=420&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+              <img src="assets/app-1.png" alt="Fishnet Manufacturing" loading="lazy"/>
               <div class="app-overlay">
                 <h3>Fishnet Manufacturing</h3>
                 <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
               </div>
             </div>
             <div class="app-card">
-              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=420&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+              <img src="assets/app-1.png" alt="Fishnet Manufacturing" loading="lazy"/>
               <div class="app-overlay">
                 <h3>Fishnet Manufacturing</h3>
                 <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
               </div>
             </div>
             <div class="app-card">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=420&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+              <img src="assets/app-1.png" alt="Fishnet Manufacturing" loading="lazy"/>
               <div class="app-overlay">
                 <h3>Fishnet Manufacturing</h3>
                 <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
               </div>
             </div>
             <div class="app-card">
-              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=420&q=75" alt="Industrial Pipes" loading="lazy"/>
+              <img src="assets/app-1.png" alt="Fishnet Manufacturing" loading="lazy"/>
               <div class="app-overlay">
-                <h3>Industrial Pipes</h3>
+                <h3>Fishnet Manufacturing</h3>
+                <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
+              </div>
+            </div>
+            <div class="app-card">
+              <img src="assets/app-1.png" alt="Fishnet Manufacturing" loading="lazy"/>
+              <div class="app-overlay">
+                <h3>Fishnet Manufacturing</h3>
+                <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
+              </div>
+            </div>
+            <div class="app-card">
+              <img src="assets/app-1.png" alt="Fishnet Manufacturing" loading="lazy"/>
+              <div class="app-overlay">
+                <h3>Fishnet Manufacturing</h3>
                 <p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p>
               </div>
             </div>
@@ -555,7 +572,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Raw material selection" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Raw material selection" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="1" hidden>
@@ -574,7 +591,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="Extrusion process" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Extrusion process" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="2" hidden>
@@ -593,7 +610,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Cooling process" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Cooling process" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="3" hidden>
@@ -612,7 +629,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Sizing and calibration" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Sizing and calibration" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="4" hidden>
@@ -631,7 +648,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80" alt="Quality control" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Quality control" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="5" hidden>
@@ -650,7 +667,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Pipe marking" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Pipe marking" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="6" hidden>
@@ -669,7 +686,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="Cutting process" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Cutting process" loading="lazy"/>
             </div>
           </div>
           <div class="proc-panel" data-panel="7" hidden>
@@ -688,7 +705,7 @@
               </ul>
             </div>
             <div class="proc-image">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Packaging and dispatch" loading="lazy"/>
+              <img src="assets/manufacturing-img.png" alt="Packaging and dispatch" loading="lazy"/>
             </div>
           </div>
         </div>
@@ -707,45 +724,49 @@
         <div class="testimonials-grid">
           <blockquote class="testi-card">
             <span class="testi-quote" aria-hidden="true">&#8220;</span>
-            <p>Mangalam&#8217;s HDPE pipes have transformed our irrigation network. Zero leakage across 12 km of installation — the BIS-certified quality speaks for itself.</p>
+            <p class="testi-headline">Revolutionized our FIBC production efficiency!</p>
+            <p>Meera Industries&#8217; TFO machines have revolutionized our FIBC production efficiency. The precision engineering delivers the consistent yarn strength critical for our bulk container applications.</p>
+            <footer>
+              <div class="testi-avatar">JM</div>
+              <div>
+                <strong>Johann Mueller</strong>
+                <span>Production Director</span>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="testi-card">
+            <span class="testi-quote" aria-hidden="true">&#8220;</span>
+            <p class="testi-headline">Excellent support for specialized applications.</p>
+            <p>The durability and performance of Meera&#8217;s fishnet processing equipment has significantly improved our marine product quality. Excellent support for specialized applications.</p>
+            <footer>
+              <div class="testi-avatar">CM</div>
+              <div>
+                <strong>Carlos Mendoza</strong>
+                <span>Operations Manager</span>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="testi-card">
+            <span class="testi-quote" aria-hidden="true">&#8220;</span>
+            <p class="testi-headline">Provides the exact specifications we need!</p>
+            <p>For our technical textile applications, Meera&#8217;s specialized machinery provides the exact specifications we need. Their understanding of automotive textile requirements is exceptional.</p>
             <footer>
               <div class="testi-avatar">RK</div>
               <div>
                 <strong>Rajesh Kumar</strong>
-                <span>Chief Engineer, Rajasthan Agri Cooperative</span>
+                <span>Manufacturing Head</span>
               </div>
             </footer>
           </blockquote>
           <blockquote class="testi-card">
             <span class="testi-quote" aria-hidden="true">&#8220;</span>
-            <p>We&#8217;ve used Mangalam pipes across three municipal water projects. The pressure ratings hold perfectly even in our high-altitude terrain — outstanding reliability.</p>
+            <p class="testi-headline">Revolutionized our FIBC production efficiency!</p>
+            <p>Meera Industries&#8217; TFO machines have revolutionized our FIBC production efficiency. The precision engineering delivers the consistent yarn strength critical for our bulk container applications.</p>
             <footer>
-              <div class="testi-avatar">PS</div>
+              <div class="testi-avatar">JM</div>
               <div>
-                <strong>Priya Sharma</strong>
-                <span>Project Director, Urban Infrastructure Ltd.</span>
-              </div>
-            </footer>
-          </blockquote>
-          <blockquote class="testi-card">
-            <span class="testi-quote" aria-hidden="true">&#8220;</span>
-            <p>Switched to Mangalam HDPE coils for our gas distribution network two years ago. The corrosion resistance and long service life have drastically cut our maintenance costs.</p>
-            <footer>
-              <div class="testi-avatar">AM</div>
-              <div>
-                <strong>Arjun Mehta</strong>
-                <span>Operations Head, South Gas Distribution Co.</span>
-              </div>
-            </footer>
-          </blockquote>
-          <blockquote class="testi-card">
-            <span class="testi-quote" aria-hidden="true">&#8220;</span>
-            <p>From technical spec sheets to on-site support, the Mangalam team is exceptional. Their PE100 pipes met every tolerance we required for our industrial effluent system.</p>
-            <footer>
-              <div class="testi-avatar">DV</div>
-              <div>
-                <strong>Deepak Verma</strong>
-                <span>Plant Manager, Hindustan Chemicals</span>
+                <strong>Johann Mueller</strong>
+                <span>Production Director</span>
               </div>
             </footer>
           </blockquote>
@@ -764,7 +785,7 @@
         <div class="portfolio-grid">
           <article class="portfolio-card">
             <div class="portfolio-img">
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=75" alt="HDPE Fittings" loading="lazy"/>
+              <img src="assets/portfolio-1.png" alt="HDPE Fittings" loading="lazy"/>
             </div>
             <div class="portfolio-body">
               <h3>HDPE Fittings &amp; Accessories</h3>
@@ -774,7 +795,7 @@
           </article>
           <article class="portfolio-card">
             <div class="portfolio-img">
-              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=75" alt="Installation Services" loading="lazy"/>
+              <img src="assets/portfolio-2.png" alt="Installation Services" loading="lazy"/>
             </div>
             <div class="portfolio-body">
               <h3>Professional Installation Services</h3>
@@ -784,7 +805,7 @@
           </article>
           <article class="portfolio-card">
             <div class="portfolio-img">
-              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=500&q=75" alt="PE-RT Heating Pipes" loading="lazy"/>
+              <img src="assets/portfolio-3.png" alt="PE-RT Heating Pipes" loading="lazy"/>
             </div>
             <div class="portfolio-body">
               <h3>PE-RT Heating Pipes</h3>
@@ -885,8 +906,7 @@
 
       <div class="footer-top">
         <a href="#" class="footer-logo-box" aria-label="Mangalam HDPE Pipes — Home">
-          <span class="logo-main">Manga<span class="logo-lam">lam</span></span>
-          <span class="logo-sub">HDPE PIPES</span>
+          <img src="assets/logo.png" alt="Mangalam HDPE Pipes" width="140" height="50" loading="lazy"/>
         </a>
         <p class="footer-tagline">Premium <strong class="text-highlight">HDPE Pipes &amp; Fittings</strong><br>Manufacturer in South India</p>
       </div>

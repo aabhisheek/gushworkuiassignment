@@ -2,26 +2,27 @@
  * MANGALAM HDPE PIPES — SCRIPT.JS
  * =====================================================
  * Handles:
- *  1. Sticky Header          — scroll shadow + hide on
- *     scroll-down / show on scroll-up
- *  2. Mobile Navigation      — hamburger toggle,
- *     outside-click close
- *  3. Smooth Scroll          — anchor links with
- *     sticky header offset
- *  4. Product Gallery        — prev/next arrows +
- *     thumbnail click, touch/swipe
- *  5. FAQ Accordion          — toggle open/close,
- *     aria-expanded sync
- *  6. Process Tabs           — tabbed manufacturing
- *     step switcher
- *  7. Applications Carousel  — prev/next + auto-play
- *     (pauses on hover)
- *  8. Modal Dialogs          — open/close for
- *     #modal-quote and #modal-download, focus trap,
- *     Escape key, backdrop click
- *  9. Gallery Zoom Lens      — circular magnifier
- * 10. Form Handling          — validation + loading
- *     spinner + success state for all 4 forms
+ *  1 — Sticky Header          — scroll shadow + hide on
+ *      scroll-down / show on scroll-up
+ *  2 — Mobile Navigation      — hamburger toggle,
+ *      outside-click close
+ *  3 — Smooth Scroll          — anchor links with
+ *      sticky header offset
+ *  4 — Product Gallery        — prev/next arrows +
+ *      thumbnail click, touch/swipe
+ *  5 — FAQ Accordion          — toggle open/close,
+ *      aria-expanded sync
+ *  6 — Process Tabs           — tabbed manufacturing
+ *      step switcher
+ *  7 — Applications Carousel  — prev/next + auto-play
+ *      (pauses on hover)
+ *  8 — Modal Dialogs          — open/close for
+ *      #modal-quote and #modal-download, focus trap,
+ *      Escape key, backdrop click
+ *  9 — Gallery Zoom Lens      — side-panel magnifier,
+ *      tablet tap-to-lightbox fallback
+ * 10 — Form Handling          — validation + loading
+ *      spinner + success state for all 4 forms
  * =====================================================
  */
 
@@ -46,7 +47,7 @@
   }
 
   /* =====================================================
-   * 1 — STICKY HEADER SHADOW
+   * 1 — STICKY HEADER
    * ===================================================== */
 
   const siteHeader = document.getElementById('siteHeader');
@@ -272,7 +273,7 @@
   });
 
   /* =====================================================
-   * 6 — MANUFACTURING PROCESS TABS
+   * 6 — PROCESS TABS
    * ===================================================== */
 
   const procTabs   = document.querySelectorAll('.proc-tab');
@@ -491,7 +492,7 @@
   });
 
   /* =====================================================
-   * 9 — GALLERY ZOOM (side-panel style, matching Figma)
+   * 9 — GALLERY ZOOM LENS
    *
    * On hover over the main gallery image:
    *  - A small rectangular indicator box (.zoom-lens) tracks
